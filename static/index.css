@@ -7,16 +7,34 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+
+h1{font-size: 40px;}
+h2{font-size: 30px;}
+h3{font-size: 25px;}
+h4{font-size: 18px;}
+a{font-size: 16px;}
+p{font-size: 16px;}
+
+
 :root{
     --blue: rgb(51, 51, 131);
 }
-
+img{
+    width: 100%;
+}
+body{
+    width: min(100%, 1500px);
+    margin: auto;
+}
 header{
     display: flex;
     align-items: center;
     justify-content: space-around;
     background: white;
     position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 2;
     padding: 10px 0;
 }
 header .main-logs{
@@ -155,15 +173,7 @@ header .menu p{
 }
 header .menu .link p{
     padding: 15px 0;
-    /* border: 2px solid red; */
 }
-
-h1{font-size: 40px;}
-h2{font-size: 25px;}
-h3{font-size: 20px;}
-h4{font-size: 18px;}
-a{font-size: 14px;}
-p{font-size: 16px;}
 
 /* FIRST SECTION */
 main section:first-child .content{
@@ -236,12 +246,178 @@ main section:first-child .content .blur .links a:first-child:hover{
 main section:first-child .deter{
     margin: auto;
     background: rgb(236, 233, 233);
-    width: min(700px, );
     padding: 30px;
     h1{font-weight: 100; width: 80%; margin: auto; color: rgb(77, 76, 76);}
 }
 
+/* SECOND SECTION */
+main section:nth-child(2) .content{
+    padding: 30px;
+}
+main section:nth-child(2) .content div img{
+    width: 100%;
+}
+main section:nth-child(2) .content .cities{
+    display: grid;
+    grid-template-columns: repeat(3, 100%);
+    gap: 20px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+main section:nth-child(2) .content .cities .city div{
+    overflow: hidden;
+}
+main section:nth-child(2) .content .cities .city{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    scroll-snap-align: center;
+}
+main section:nth-child(2) .content .cities .city img:hover{
+    transform: scale(1.3);
+}
+main section:nth-child(2) .content .cities .city .txt{
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+main section:nth-child(2) .content .cities .city .txt *{
+    width: 100%;
+}
+main section:nth-child(2) .content .cities .city .txt h3{
+    color: var(--blue);
+    margin: 10px 0;
+}
+main section:nth-child(2) .content .cities .city .txt p{
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+main section:nth-child(2) .content .cities .city .txt h4{
+    font-variant: small-caps;
+    font-style: italic;
+}
+main section:nth-child(2) .resources{
+    background-image: url('/static/images/cimtac_feature_view_day.webp');
+    background-size: cover;
+    background-position: center;
+    min-height: 70vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 10vh;
+    border-radius: 20px;
+    overflow: hidden;
+}
+main section:nth-child(2) .resources div{
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+main section:nth-child(2) .resources div p{
+    line-height: 1.5;
+    margin: 10px auto;
+    width: 70%;
+    text-align: center;
+}
+main section:nth-child(2) .resources div a{
+    display: block;
+    margin-top: 30px;
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    width: fit-content;
+    padding: 8px 28px;
+    border-radius: 20px;
+}
+main section:nth-child(2) .resources div a:hover{
+    background: white;
+    color: var(--blue);
+    cursor: pointer;
+}
 
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 40vh;
+    background-image: url('/static/images/pexels-sevenstormphotography-439416.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    backdrop-filter: brightness(50%);
+}
+footer .content{
+    padding: 20px;
+    color: white;
+    backdrop-filter: blur(5px) brightness(50%) ;
+    border-radius: 5px;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+
+
+    @media (width >= 30em){
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (width >= 60em){
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+footer .content section h3{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-variant: small-caps;
+    margin: 20px 0;
+}
+footer .content section h3 img{
+    width: 60px;
+}
+footer .content section a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+    margin: 10px 0;
+}
+footer .content section a:hover{
+    color: var(--blue);
+}
+footer .content section .socials{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+footer .content section .socials svg{
+    width: 30px;
+    padding: 5px;
+    background: white;
+    border-radius: 50%;
+}
+footer .content section .socials svg:hover{
+    fill: var(--blue);
+}
+footer .content section:last-child a#news{
+    padding: 8px 20px;
+    display: block;
+    margin-top: 20px;
+    width: fit-content;
+    background: var(--blue);
+}
+footer .content section:last-child a#news:hover{
+    color: white;
+    border-radius: 20px;
+}
 
 @media screen and (max-width: 900px) {
     h1{font-size: 25px;}
@@ -249,7 +425,7 @@ main section:first-child .deter{
     h3{font-size: 20px;}
     h4{font-size: 17px;}
     a{font-size: 14px;}
-    p{font-size: 15px;}   
+    p{font-size: 17px;}   
 
     header .main-logs{
         display: none;
@@ -259,6 +435,9 @@ main section:first-child .deter{
     }
 
     /* FIRST */
+    main section:first-child .content{
+        background-attachment: scroll;
+    }
     main section:first-child .content .blur{
         width: 100%;
         backdrop-filter: blur(3px);
@@ -268,7 +447,21 @@ main section:first-child .deter{
     }
     main section:first-child .deter{
         padding: 40px 20px;
-        h1{text-align: justify;}
+        h1{text-align: center;}
+    }
+
+    /* SECOND */
+    main section:nth-child(2) .content .cities .city{
+        grid-template-columns: 1fr;
+    }
+    main section:nth-child(2) .resources{
+        grid-template-columns: 1fr;
+    }
+
+    /* FOOTER */
+    footer .content{
+        grid-template-columns: 1fr;
+        width: 100%;
     }
 }
 

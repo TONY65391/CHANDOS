@@ -6,3 +6,5 @@ openBtn.onclick = () => {
     openBtn.classList.toggle('open');
     header.classList.toggle('open');
 }
+
+const sections = document.querySelectorAll('main section');
