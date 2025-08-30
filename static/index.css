@@ -3,6 +3,277 @@
     margin: 0;
     box-sizing: border-box;
     user-select: none;
-    color: red;
+    transition: 0.4s ease-in-out;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+:root{
+    --blue: rgb(51, 51, 131);
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: white;
+    position: relative;
+    padding: 10px 0;
+}
+header .main-logs{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+header div img{
+    width: 150px;
+    background: transparent;
+}
+header div p{
+    color: black;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+}
+header .link{
+    display: block;
+    position: relative;
+}
+header .link::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--blue);
+    position: absolute;
+    left: 0;
+    transition: 0.4s ease-in-out;
+}
+header .link:hover::after{
+    width: 100%;
+}
+header .link:hover p{
+    color: var(--blue);
+}
+header .link ul{
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    width: 200px;
+    padding: 10px;
+    left: 0;
+    background: var(--blue);
+    background: white;
+    transition: opacity 0.4s ease-in-out;
+    z-index: 5;
+}
+header .link ul li a{
+    color: var(--blue);
+    text-decoration: none;
+    margin: 10px 0;
+    text-transform: capitalize;
+    display: block;
+}
+header .link ul li a:hover{
+    font-style: italic;
+    
+}
+header .link:hover ul{
+    opacity: 1;
+    pointer-events: all;
+}
+header .sub-links{
+    padding: 20px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    line-height: 1.5;
+    background: rgba(233, 231, 231, 0.5);
+}
+header .sub-links p{
+    margin: 10px 0;
+}
+header .sub-links div{
+    padding: 0 20px 0 20px;
+    p{font-weight: 500;}
+}
+header .sub-links.hide{
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+}
+header .sub-links{
+    opacity: 1;
+    pointer-events: all;
+}
+header .sub-links div:first-child{
+    border-right: 1px solid grey;
+    p{color: grey; cursor: context-menu;}
+}
+header .openBtn{
+    cursor: pointer;
+}
+header .openBtn div{
+    width: 23px;
+    height: 2px;
+    background: var(--blue);
+    border-radius: 5px;
+    margin: 5px;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+header .openBtn.open div:first-child{
+    transform: translateY(5px) rotate(45deg);
+}
+header .openBtn.open div:nth-child(2){
+    opacity: 0;
+}
+header .openBtn.open div:last-child{
+    transform: translateY(-8px) rotate(-45deg);
+}
+header .menu{
+    background: black;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    padding: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease-in-out;
+    z-index: 10;
+}
+header.open .menu{
+    pointer-events: all;
+    opacity: 1;
+}
+header .menu p{
+    color: white;
+}
+header .menu .link p{
+    padding: 15px 0;
+    /* border: 2px solid red; */
+}
+
+h1{font-size: 40px;}
+h2{font-size: 25px;}
+h3{font-size: 20px;}
+h4{font-size: 18px;}
+a{font-size: 14px;}
+p{font-size: 16px;}
+
+/* FIRST SECTION */
+main section:first-child .content{
+    background-image: url('/static/images/chandos_workers_construction.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 80vh;
+    position: relative;
+}
+main section:first-child .content .blur{
+    color: white;
+    width: 40%;
+    min-height: 80vh;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    padding: 0 30px;
+}
+main section:first-child .content .blur *{
+    width: 100%;
+}
+main section:first-child .content .blur h4{
+    font-weight: 100;
+    margin-bottom: 10px;
+}
+main section:first-child .content .blur h1{
+    font-variant: small-caps;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+main section:first-child .content .blur p{
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+main section:first-child .content .blur .links{
+    margin: 30px 0;
+    gap: 10px;
+    display: flex;
+}
+main section:first-child .content .blur .links a{
+    text-decoration: none;
+    color: white;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+main section:first-child .content .blur .links a:hover svg{
+    fill: var(--blue);
+}
+main section:first-child .content .blur .links a svg{
+    width: 40px;
+    fill: white;
+    /* border: 2px solid red; */
+}
+main section:first-child .content .blur .links a:first-child{
+    border: 2px solid white;
+    backdrop-filter: blur(100px);
+    border-radius: 10px;
+}
+main section:first-child .content .blur .links a:first-child:hover{
+    background: white;
+    color: var(--blue);
+}
+main section:first-child .deter{
+    margin: auto;
+    background: rgb(236, 233, 233);
+    width: min(700px, );
+    padding: 30px;
+    h1{font-weight: 100; width: 80%; margin: auto; color: rgb(77, 76, 76);}
+}
+
+
+
+@media screen and (max-width: 900px) {
+    h1{font-size: 25px;}
+    h2{font-size: 22px;}
+    h3{font-size: 20px;}
+    h4{font-size: 17px;}
+    a{font-size: 14px;}
+    p{font-size: 15px;}   
+
+    header .main-logs{
+        display: none;
+    }
+    header div img{
+        width: 80px;
+    }
+
+    /* FIRST */
+    main section:first-child .content .blur{
+        width: 100%;
+        backdrop-filter: blur(3px);
+    }
+    main section:first-child .content .blur .links a{
+        padding: 0px 10px;
+    }
+    main section:first-child .deter{
+        padding: 40px 20px;
+        h1{text-align: justify;}
+    }
+}
+
+@media screen and (min-width: 900px) {
+    header .openBtn, header .menu{
+        display: none;
+    }    
 }
