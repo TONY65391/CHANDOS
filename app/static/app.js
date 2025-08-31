@@ -12,6 +12,14 @@ const secondSection = sections[1];
 const thirdSection = sections[2];
 const fourthSection = sections[3];
 const body = document.getElementsByTagName('body')[0];
+const loading = document.querySelector('.loading')
+
+setTimeout(() => {
+    loading.classList.add('fade');
+}, 3000);
+setTimeout(() => {
+    document.body.removeChild(loading);
+}, 5000);
 
 
 if (body.classList.contains('indexPage')){
@@ -28,5 +36,7 @@ if (body.classList.contains('indexPage')){
 }
 
 else if(body.classList.contains('projectsPage')){
-    console.log("PRojects")
+    setTimeout(() => {
+        sections[0].classList.add('reset');
+    }, 1000);
 }

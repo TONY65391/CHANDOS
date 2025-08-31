@@ -1,2 +1,12 @@
 @import url('index.css');
 
+/* FIRST */
+main section:nth-child(1) .content{
+    /* opacity: 1;
+    transform: translate(0); */
+    background-image: url('/static/images/pexels-rezwan-1145434.jpg');
+}
+main section:first-child .content .blur{
+    /* opacity: 1;
+    transform: translate(0); */
+}

@@ -167,6 +167,37 @@ header .menu .link p{
     }
 }
 
+.loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    background: #0C0C0C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.loading::after{
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 2px solid blue;
+    border-top-color: red;
+    border-radius: 50%;
+    animation: loading 0.5s ease infinite;
+}
+@keyframes loading{
+    from{transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
+}
+.loading.fade{
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
 /* FIRST SECTION */
 main section:first-child .content{
     background-image: url('/static/images/chandos_workers_construction.jpg');
@@ -577,7 +608,10 @@ footer .content section:last-child a#news:hover{
     p{font-size: 17px;}  
     
     
-
+    .loading::after{
+        width: 30px;
+        height: 30px;
+    }
     header .main-logs{
         display: none;
     }
