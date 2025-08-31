@@ -8,3 +8,7 @@ from django.http import HttpResponse
 def home(request):
     template = loader.get_template('index.html')
     return HttpResponse(template.render(request = request))
+
+def projects(request):
+    template = loader.get_template('project.html')
+    return HttpResponse(template.render(request = request))

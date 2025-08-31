@@ -25,6 +25,7 @@ img{
 body{
     width: min(100%, 1500px);
     margin: auto;
+    overflow-x: hidden;
 }
 header{
     display: flex;
@@ -42,16 +43,14 @@ header .main-logs{
     align-items: center;
     gap: 30px;
 }
+header .main-logs .link a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
 header div img{
     width: 150px;
     background: transparent;
-}
-header div p{
-    color: black;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
 }
 header .link{
     display: block;
@@ -64,12 +63,13 @@ header .link::after{
     background-color: var(--blue);
     position: absolute;
     left: 0;
+    bottom: -5px;
     transition: 0.4s ease-in-out;
 }
 header .link:hover::after{
     width: 100%;
 }
-header .link:hover p{
+header .link:hover a{
     color: var(--blue);
 }
 header .link ul{
@@ -102,36 +102,15 @@ header .link:hover ul{
     opacity: 1;
     pointer-events: all;
 }
-header .sub-links{
-    padding: 20px;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    line-height: 1.5;
-    background: rgba(233, 231, 231, 0.5);
+header .menu a{
+    color: white;
+    text-decoration: none;
+    margin: 15px 0;
+    display: block;
+    text-transform: uppercase;
+    text-align: center;
 }
-header .sub-links p{
-    margin: 10px 0;
-}
-header .sub-links div{
-    padding: 0 20px 0 20px;
-    p{font-weight: 500;}
-}
-header .sub-links.hide{
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-    pointer-events: none;
-}
-header .sub-links{
-    opacity: 1;
-    pointer-events: all;
-}
-header .sub-links div:first-child{
-    border-right: 1px solid grey;
-    p{color: grey; cursor: context-menu;}
-}
+
 header .openBtn{
     cursor: pointer;
 }
@@ -175,19 +154,35 @@ header .menu .link p{
     padding: 15px 0;
 }
 
+.reset{
+    animation: reset 1s linear forwards;
+}
+@keyframes reset{
+    to{
+        transform: translate(0) scale(1);
+        opacity: 1;
+        pointer-events: all;
+        visibility: visible;
+        filter: blur(0) brightness(100%);
+    }
+}
+
 /* FIRST SECTION */
 main section:first-child .content{
     background-image: url('/static/images/chandos_workers_construction.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    min-height: 80vh;
+    min-height: 100vh;
     position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    pointer-events: none;
 }
 main section:first-child .content .blur{
     color: white;
     width: 40%;
-    min-height: 80vh;
+    min-height: 100vh;
     max-height: 80vh;
     overflow: hidden;
     display: flex;
@@ -196,6 +191,9 @@ main section:first-child .content .blur{
     flex-direction: column;
     backdrop-filter: blur(10px);
     padding: 0 30px;
+    transform: translateX(100px);
+    opacity: 0;
+    animation-delay: 3s;
 }
 main section:first-child .content .blur *{
     width: 100%;
@@ -232,7 +230,6 @@ main section:first-child .content .blur .links a:hover svg{
 main section:first-child .content .blur .links a svg{
     width: 40px;
     fill: white;
-    /* border: 2px solid red; */
 }
 main section:first-child .content .blur .links a:first-child{
     border: 2px solid white;
@@ -247,7 +244,22 @@ main section:first-child .deter{
     margin: auto;
     background: rgb(236, 233, 233);
     padding: 30px;
+    opacity: 0;
     h1{font-weight: 100; width: 80%; margin: auto; color: rgb(77, 76, 76);}
+}
+
+
+/* FIRST SECTION ANIMATIONS */
+main section:first-child.reset .content{
+    animation: reset 1s ease-in-out forwards;
+}
+main section:first-child.reset .content .blur{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 2s;
+}
+main section:first-child.reset .deter{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 3s;
 }
 
 /* SECOND SECTION */
@@ -273,6 +285,10 @@ main section:nth-child(2) .content .cities .city{
     grid-template-columns: repeat(2, 1fr);
     scroll-snap-align: center;
 }
+main section:nth-child(2) .content .cities .city img{
+    transform: translateX(100px);
+    opacity: 0;
+}
 main section:nth-child(2) .content .cities .city img:hover{
     transform: scale(1.3);
 }
@@ -282,6 +298,8 @@ main section:nth-child(2) .content .cities .city .txt{
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    transform: translateX(100px);
+    opacity: 0;
 }
 main section:nth-child(2) .content .cities .city .txt *{
     width: 100%;
@@ -308,6 +326,7 @@ main section:nth-child(2) .resources{
     margin-top: 10vh;
     border-radius: 20px;
     overflow: hidden;
+    opacity: 0;
 }
 main section:nth-child(2) .resources div{
     background: var(--blue);
@@ -318,10 +337,17 @@ main section:nth-child(2) .resources div{
     color: white;
     text-shadow: 1px 1px 1px black;
 }
+main section:nth-child(2) .resources div h1,
+main section:nth-child(2) .resources div h3{
+    opacity: 0;
+    transform: translateY(30px);
+}
 main section:nth-child(2) .resources div p{
     line-height: 1.5;
     margin: 10px auto;
     width: 70%;
+    opacity: 0;
+    transform: translateY(30px);
     text-align: center;
 }
 main section:nth-child(2) .resources div a{
@@ -333,6 +359,9 @@ main section:nth-child(2) .resources div a{
     width: fit-content;
     padding: 8px 28px;
     border-radius: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(5px);
 }
 main section:nth-child(2) .resources div a:hover{
     background: white;
@@ -348,11 +377,15 @@ main section:nth-child(2) .partners{
 main section:nth-child(2) .partners h3{
     text-align: center;
     margin: 10px 0;
+    transform: translateY(30px);
+    opacity: 0;
 }
 main section:nth-child(2) .partners h1{
     text-align: center;
     color: var(--blue);
     margin: 10px 0 40px 0;
+    transform: translateY(30px);
+    opacity: 0;
 }
 main section:nth-child(2) .partners .images{
     display: grid;
@@ -373,7 +406,88 @@ main section:nth-child(2) .partners .images img{
     width: 100px;
     display: block;
     margin: auto;
+    transform: translateY(30px);
+    opacity: 0;
 }
+
+/* SECOND ANIMATIONS */
+main section:nth-child(2).reset .content .cities .city img{
+    animation: reset 1s ease-in-out forwards;
+}
+main section:nth-child(2).reset .content .cities .city .txt{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 2s;
+}
+main section:nth-child(2).reset .resources{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 3s;
+}
+main section:nth-child(2).reset .resources div h1{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 4s;
+}
+main section:nth-child(2).reset .resources div h3{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 5s;
+}
+main section:nth-child(2).reset .resources div p{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 6s;
+}
+main section:nth-child(2).reset .resources div a{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 7s;
+}
+main section:nth-child(2).reset .partners h3{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 8s;
+}
+main section:nth-child(2).reset .partners h1{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 9s;
+}
+main section:nth-child(2).reset .partners .images img:first-child{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 10s;
+}
+main section:nth-child(2).reset .partners .images img:nth-child(2){
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 10.5s;
+}
+main section:nth-child(2).reset .partners .images img:nth-child(3){
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 11s;
+}
+main section:nth-child(2).reset .partners .images img:nth-child(4){
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 11.5s;
+}
+main section:nth-child(2).reset .partners .images img:nth-child(5){
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 12s;
+}
+main section:nth-child(2).reset .partners .images img:nth-child(6){
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 12.5s;
+}
+main section:nth-child(2).reset .partners .images img:nth-child(7){
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 13s;
+}
+main section:nth-child(2).reset .partners .images img:nth-child(8){
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 13.5s;
+}
+main section:nth-child(2).reset .partners .images img:nth-child(9){
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 14s;
+}
+main section:nth-child(2).reset .partners .images img:last-child{
+    animation: reset 1s ease-in-out forwards;
+    animation-delay: 14.5s;
+}
+
+
 
 footer{
     display: flex;
