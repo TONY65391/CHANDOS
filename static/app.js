@@ -4,7 +4,7 @@ const menu = header.querySelector('.menu');
 
 openBtn.onclick = () => {
     openBtn.classList.toggle('open');
-    header.classList.toggle('open');
+    header.classList.toggle('active');
 }
 
 const sections = document.querySelectorAll('main section');

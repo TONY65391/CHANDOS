@@ -5,35 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/static/images/55bfcb0d-39d7-42d8-81ec-13623a872d89_small-removebg-preview.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="{% static 'project.css' %}">
     <title>Our Projects | Chandos Construction</title>
 </head>
 <body class="projectsPage">
-    <header>
-        <div>
-            <img src="/static/images/Chandos_Construction_Ltd__Chandos_Construction_Commits_to_Net_Ze-removebg-preview.png" alt="">
+        <header>
+        <div class="logo">
+            <img src="/static/images/55bfcb0d-39d7-42d8-81ec-13623a872d89_small-removebg-preview.png" alt="">
+            <h3>Chandos</h3>
         </div>
 
         <div class="main-logs">
+
             <div class="link">
-                <a href="home">Home</a>
-            </div>
-            <div class="link">
-                <a href="">who we are</a>
-            </div>
-            <div class="link">
-                <a href="">what we do</a>
-            </div>
-            <div class="link">
-                <a href="">how we build</a>
+                <a>
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
             </div>
 
             <div class="link">
-                <a>Our Projects</a>
+                <a href="">
+                    <i class="fa-solid fa-circle-question"></i>
+                    who we are
+                </a>
             </div>
+
             <div class="link">
-                <a href="blog">Our Blog</a>
+                <a href="our-projects">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    our projects 
+                </a>
             </div>
+
+            <div class="link">
+                <a href="signup">
+                    <i class="fa-solid fa-user-plus"></i>
+                    SignUp
+                </a>
+            </div>
+
+            <div class="link">
+                <a href="login">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Login
+                </a>
+            </div>
+        </div>
+
+        <div class="accounts">
+            <a href="signup">
+                <i class="fa-solid fa-user-plus"></i>
+                SignUp
+            </a>
+            <a href="login">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </a>
         </div>
 
         <div class="openBtn">
@@ -41,38 +72,18 @@
             <div></div>
             <div></div>
         </div>
-
-        <div class="menu">
-            <div class="link">
-                <a href="home">Home</a>
-            </div>
-            <div class="link">
-                <a href="">who we are</a>
-            </div>
-            <div class="link">
-                <a href="">what we do</a>
-            </div>
-            <div class="link">
-                <a href="">how we build</a>
-            </div>
-            <div class="link">
-                <a>our projects</a>
-            </div>
-            <div class="link">
-                <a href="">our blog</a>
-            </div>
-        </div>
-
     </header>
 
     <div class="loading"></div>
+
+    
 
     <main>
         <section>
             <div class="content">
                 <div class="blur">
                     <h4>Chandos Construction</h4>
-                    <h1>Our Projects —— It's our sole mission to bring your ideas into life</h1>
+                    <h1>Our Projects — It's our sole mission to bring your ideas into life</h1>
                     <p>We specialize in projects with a level of complexity that requires deep collaboration for success. From a nuclear research facility to recreation centers or small tenant improvement, we execute every project with a relentless focus on service. Ready to join us? </p>
 
                     <div class="links">
@@ -88,9 +99,9 @@
 
         <section>
             <h1>Our Projects</h1>
-            <h4>Here are a few of our modern-day websites with state of the art companies</h4>
+            <h4>Here are a few of our modern-day projects with state of the art companies</h4>
             <div class="filters">
-                <button class="active" id="all">All</button>
+                <button id="all">All</button>
                 <button id="school">School / Education</button>
                 <button id="golf">Golf</button>
                 <button id="restaurant">Restaurant</button>
