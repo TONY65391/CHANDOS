@@ -49,19 +49,18 @@ else if(body.classList.contains('projectsPage')){
     const projects = sections[1].querySelectorAll('.projects .project');
     const filters = [...sections[1].querySelectorAll('.filters button')];
     
+    filters[0].classList.add('active');
     function resetFilters(){
         filters.forEach(filter => {
             filter.classList.remove('active');
         });
     };
-
     filters.map((filter, index) => {
         filter.addEventListener('click', () => {
             resetFilters();
             filters[index].classList.add('active');
         });
     });
-
     school.onclick = () => {
         projects.forEach(project => {
             project.style.display = "";

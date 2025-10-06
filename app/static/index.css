@@ -2,8 +2,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    -webkit-user-select: none;
+    -ms-user-select: none;
     user-select: none;
-    transition: 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -28,102 +30,106 @@ body{
     overflow-x: hidden;
 }
 header{
+    max-height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    backdrop-filter: blur(20px) brightness(50%);
-    position: relative;
+    padding: 1em;
     position: sticky;
     top: 0;
-    z-index: 2;
-    padding: 10px 0;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    z-index: 3;
+    color: white;
 }
 header .logo{
     display: flex;
     align-items: center;
-    img{width: 70px;}
-    h3{font-variant: small-caps; color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);}
+}
+header .logo img{
+    width: 60px;
 }
 header .main-logs{
     display: flex;
     align-items: center;
-    gap: 30px;
-}
-header .main-logs a{
-    text-decoration: none;
-    color: white;
-    text-transform: capitalize;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    gap: 30px
 }
 header .main-logs .link{
     position: relative;
 }
-header .main-logs .link::after{
+header .main-logs .link::before{
     position: absolute;
+    bottom: -10px;
     left: 0;
-    bottom: -5px;
-    height: 2px;
-    background: var(--blue);
     width: 0%;
+    height: 2px;
+    border-radius: 10px;
+    background: var(--blue);
     content: "";
-    transition: width 0.5s ease-in-out;
+    transition: width 0.3s ease-in-out;
 }
-header .main-logs .link:hover::after{
+header .main-logs .link:hover::before{
     width: 100%;
 }
 header .main-logs .link:hover a{
     color: var(--blue);
 }
-header .main-logs .link:nth-child(4),
-header .main-logs .link:last-child{
-    display: none;
+header .main-logs a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: black;
 }
+header #signup,
+header #login{display: none;}
+
 header .accounts{
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 header .accounts a{
-    text-decoration: none;
-    color: white;
-    border-radius: 20px;
-    padding: 8px 28px;
+    padding: 0.5em 1em;
     border: 2px solid var(--blue);
+    border-radius: 20px;
+    color: black;
+    box-shadow: 2px 6px 20px rgba(0, 0, 0, 0.5), 2px 6px 20px rgba(0, 0, 0, 0.5);
 }
-header .accounts a:first-child{
+header .accounts a:hover,
+body[class="signup"] header .accounts a.active,
+body[class="login"] header .accounts a.active{
     background: var(--blue);
+    color: white;
 }
-header .accounts a:first-child:hover{
-    background: none;
-    transform: rotateY(360deg) translateY(-5px);
+body[class="signup"] header .accounts a{
+    color: black;
 }
-header .accounts a:last-child:hover{
-    background: var(--blue);
-    transform: rotateY(360deg) translateY(-5px);
-}
-
 
 
 
 header .openBtn{
     cursor: pointer;
 }
-header .openBtn div{
-    width: 23px;
-    height: 2px;
+header .openBtn:hover div{
     background: var(--blue);
+}
+header .openBtn div{
+    width: 27px;
+    height: 4px;
+    background: white;
     border-radius: 5px;
     margin: 5px;
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, background 0.4s ease-in-out;
 }
 header .openBtn.open div:first-child{
-    transform: translateY(5px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 header .openBtn.open div:nth-child(2){
     opacity: 0;
 }
 header .openBtn.open div:last-child{
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-9px) rotate(-45deg);
 }
 header .menu{
     background: black;
@@ -188,8 +194,8 @@ header .accounts a{
     animation: loading 0.5s ease infinite;
 }
 @keyframes loading{
-    from{transform: rotate(0deg);}
-    to{transform: rotate(360deg);}
+    from{-webkit-transform: rotate(0deg); transform: rotate(0deg); }
+    to{-webkit-transform: rotate(360deg); transform: rotate(360deg);}
 }
 .loading.fade{
     transition: opacity 0.5s ease-in-out;
@@ -208,6 +214,7 @@ main section:first-child .content{
     opacity: 0;
     pointer-events: none;
     overflow: hidden;
+    margin-top: -80px;
 }
 main section:first-child .content .blur{
     color: white;
@@ -219,7 +226,8 @@ main section:first-child .content .blur{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     padding: 0 30px;
     transform: translateX(100px);
     opacity: 0;
@@ -263,6 +271,7 @@ main section:first-child .content .blur .links a svg{
 }
 main section:first-child .content .blur .links a:first-child{
     border: 2px solid white;
+    -webkit-backdrop-filter: blur(100px);
     backdrop-filter: blur(100px);
     border-radius: 10px;
 }
@@ -305,7 +314,6 @@ main section:nth-child(2) .content .cities{
     gap: 20px;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
-    scrollbar-width: none;
 }
 main section:nth-child(2) .content .cities .city div{
     overflow: hidden;
@@ -529,11 +537,13 @@ footer{
     background-size: cover;
     background-position: center;
     padding: 20px;
+    -webkit-backdrop-filter: brightness(50%);
     backdrop-filter: brightness(50%);
 }
 footer .content{
     padding: 20px;
     color: white;
+    -webkit-backdrop-filter: blur(5px) brightness(50%);
     backdrop-filter: blur(5px) brightness(50%) ;
     border-radius: 5px;
     width: fit-content;
@@ -621,72 +631,65 @@ body[class="login"]{
     flex-direction: column;
 }
 
-.form-container{
+.wrapper .form-container{
     border: 2px solid rgba(0, 0, 0, 0.2);
     box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.5), 2px 6px 30px rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(10px) brightness(50%);
     backdrop-filter: blur(10px) brightness(50%);
     border-radius: 20px;
     color: white;
     padding: 30px;
     width: min(600px, 90%);
-    margin: auto;
+    margin: 30px auto 0 auto;
 }
-.form-container h3{
+.wrapper .form-container form{
+    margin-top: 20px;
+}
+.wrapper .form-container h3{
     font-variant: small-caps;
     font-size: 30px;
 }
-.form-container .names{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+.wrapper .form-container p{
     margin-top: 10px;
-}
-.form-container .names div{
-    /* border: 2px solid red; */
-    flex: 1;
-}
-.form-container div{
-    display: flex;
+    display: grid;
+    grid-template-columns: 0.4fr auto;
+    grid-template-rows: auto;
+    
     align-items: center;
-    margin-bottom: 10px;
 }
-.form-container div label{
-    height: 40px;
-    width: 50px;
+.wrapper .form-container p label{
     background: var(--blue);
+    padding: 5px 15px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
-.form-container input{
-    width: 100%;
-    height: 40px;
-    padding-left: 20px;
+.wrapper .form-container p input{
+    padding: 5px 15px;
     border: none;
     outline: none;
+    border: 2px solid transparent;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    background: white;
 }
-.form-container input:focus{
-    outline: 1px solid var(--blue);
-    height: 38px;
+.wrapper .form-container p input:hover,
+.wrapper .form-container p input:focus{
+    border-color: var(--blue);
 }
-.form-container input[type="submit"]{
-    border-radius: 0px;
-    cursor: pointer;
-    font-size: 16px;
-    color: white;
+.wrapper .form-container form button{
+    border: 2px solid transparent;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 20px;
     background: var(--blue);
-
-}
-.form-container input[type="submit"]:hover{
-    background: rgb(31, 31, 112);
+    color: white;
     border-radius: 10px;
 }
-.form-container .alt{
+.wrapper .form-container form button:hover{
+    border-color: wheat;
+    cursor: pointer;
+}
+.wrapper .form-container .alt{
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -694,7 +697,7 @@ body[class="login"]{
     margin: 20px auto;
     p{color: wheat;}
 }
-.form-container .alt::before{
+.wrapper .form-container .alt::before{
     content: "";
     height: 1px;
     width: 40%;
@@ -703,7 +706,7 @@ body[class="login"]{
     top: 50%;
     left: 0;
 }
-.form-container .alt::after{
+.wrapper .form-container .alt::after{
     content: "";
     height: 1px;
     width: 40%;
@@ -712,12 +715,12 @@ body[class="login"]{
     top: 50%;
     right: 0;
 }
-.form-container h5{
+.wrapper .form-container h5{
     color: wheat;
     width: fit-content;
     margin: auto;
 }
-.form-container h5 a{
+.wrapper .form-container h5 a{
     color: white;
     font-style: italic;
     text-transform: uppercase;
@@ -738,6 +741,8 @@ body[class="login"]{
         width: 30px;
         height: 30px;
     }
+    header #signup,
+    header #login{display: block;}
     header .main-logs{
         position: absolute;
         top: 100%;
@@ -747,6 +752,7 @@ body[class="login"]{
         opacity: 0;
         pointer-events: none;
         padding: 20px;
+        color: white;
     }
     header.active .main-logs{
         opacity: 1;
@@ -756,6 +762,7 @@ body[class="login"]{
         display: block;
         margin: 20px 0;
         text-align: center;
+        color: white;
     }
     header .main-logs .link:nth-child(4),
     header .main-logs .link:last-child{
@@ -777,7 +784,13 @@ body[class="login"]{
     }
     main section:first-child .content .blur{
         width: 100%;
+        -webkit-backdrop-filter: blur(3px);
         backdrop-filter: blur(3px);
+        text-align: center;
+    }
+    main section:first-child .content .blur .links{
+        width: fit-content;
+        margin: 20px auto 10px auto;
     }
     main section:first-child .content .blur .links a{
         padding: 0px 10px;
