@@ -670,6 +670,7 @@ body[class="login"]{
     border: 2px solid transparent;
     max-width: 100%;
     width: 100%;
+    border-radius: 0px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     background: white;
@@ -728,7 +729,85 @@ body[class="login"]{
     text-transform: uppercase;
 }
 
-
+.error{
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    visibility: hidden;
+    pointer-events: none;
+}
+.error.show{
+    animation: showError 0.4s ease-in-out forwards;
+}
+@keyframes showError{
+    from{transform: translateY(20px); visibility: hidden; opacity: 0; pointer-events: none;}
+    to{transform: translateY(0px); visibility: visible; opacity: 1; pointer-events: all;}
+}
+.error.hide{
+    animation: hideError 0.4s ease-in-out forwards;
+}
+@keyframes hideError{
+    from{transform: translateY(0px); visibility: visible; opacity: 1; pointer-events: all;}
+    to{transform: translateY(20px); visibility: hidden; opacity: 0; pointer-events: none;}
+}
+.error .sub{
+    width: fit-content;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    list-style: none;
+    width: min(400px, 90%);
+    border: 2px solid rgb(90, 39, 39);
+    padding: 20px;
+    color: white;
+    border: 2px solid;
+    border-image: linear-gradient(red, blue) 1;
+    border-radius: 20px;
+}
+.error .sub ul{
+    margin-top: 20px;
+}
+.error .sub ul li{
+    color: rgb(228, 79, 79);
+    line-height: 1.5;
+    list-style: none;
+}
+.error .sub button{
+    border: none;
+    padding: 7px 30px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background: black;
+    color: white;
+    position: relative;
+    cursor: pointer;
+}
+.error .sub button:hover::after{
+    filter: blur(15px);
+}
+.error .sub button::after,
+.error .sub button::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: conic-gradient(red, blue, red);
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    padding: 2px;
+    filter: blur(5px);
+    transition: filter 0.4s ease-in-out;
+}
 
 @media screen and (max-width: 900px) {
     h1{font-size: 25px;}

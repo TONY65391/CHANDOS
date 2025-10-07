@@ -14,13 +14,14 @@ const fourthSection = sections[3];
 const body = document.getElementsByTagName('body')[0];
 const loading = document.querySelector('.loading')
 
-setTimeout(() => {
-    loading.classList.add('fade');
-}, 3000);
-setTimeout(() => {
-    document.body.removeChild(loading);
-}, 5000);
-
+if (loading){
+    setTimeout(() => {
+        loading.classList.add('fade');
+    }, 3000);
+    setTimeout(() => {
+        document.body.removeChild(loading);
+    }, 5000);
+}
 
 if (body.classList.contains('indexPage')){
     setTimeout(() => {
@@ -112,3 +113,111 @@ else if(body.classList.contains('projectsPage')){
         });
     };
 };
+
+
+const form = document.getElementById('form');
+const nameInput = form.querySelector('#id_name');
+const usernameInput = form.querySelector('#id_username');
+const emailInput = form.querySelector('#id_email');
+const passwordInput = form.querySelector('#id_password');
+const errorContainer = document.querySelector('.error');
+const errorList = document.querySelector('.error .sub ul');
+const errorBtn = document.querySelector('.error .sub button');
+
+if (errorBtn){
+    errorBtn.addEventListener('click', () => {
+        errorContainer.classList.remove('show');
+        errorContainer.classList.add('hide');
+        console.log(errorContainer);
+    })
+}
+
+if (form){
+    form.addEventListener('submit', (e) => {
+
+        if (nameInput){
+            error = Signup(usernameInput.value, emailInput.value, passwordInput.value)
+            if (error.length > 0){
+                e.preventDefault();
+                errorList.innerHTML = "";
+                for (i = 0; i < error.length; i++){
+                    errorContainer.classList.add('show');
+                    const li = document.createElement('li');
+                    li.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> ' + error[i];
+                    errorList.append(li);
+                }
+            }
+        }
+        else{
+            error = Login(usernameInput.value, passwordInput.value)
+            console.clear()
+            if (error.length > 0){
+                e.preventDefault();
+                errorList.innerHTML = "";
+                for (i = 0; i < error.length; i++){
+                    errorContainer.classList.remove('hide');
+                    errorContainer.classList.add('show');
+                    const li = document.createElement('li');
+                    li.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> ' + error[i];
+                    errorList.append(li);
+                }
+            }
+        }
+
+        function Signup(username, email, password){
+            var error = [];
+
+            if (username.includes(" ")){
+                error.push('Username must not contain space')
+            }
+            if (username.includes("@") === false){
+                error.push('Username must contain the "@" symbol')
+            }
+            if (username.length < 10){
+                error.push('Username must have at least 10 characters')
+            }
+            if (email.includes(" ")){
+                error.push('Email must not contain space')
+            }
+            if (email.includes('@') === false){
+                error.push('Email must contain the "@" symbol')
+            }
+            if (password.includes('')){
+                error.push('Password must not contain space')
+            }
+            if (password.length < 8){
+                error.push('Password must have at least 8 characters')
+            }
+
+            return error;
+        };
+
+        function Login(username, password){
+            var error = [];
+
+            if (username.includes(" ")){
+                error.push('Username must not contain space')
+            }
+            if (username.includes('@') === false){
+                error.push('Username must contain the "@" symbol')
+            }
+            if (username.length < 10){
+                error.push('Username must have at least 10 characters')
+            }
+            if (username !== '@johnkuollualbol'){
+                error.push('User does not exist!')
+            }
+            if (password !== 'johnkuollualbol001'){
+                error.push(`Wrong password for ${username} user`)
+            }
+            if (password.includes(" ")){
+                error.push('Password must not contain space')
+            }
+            if (password.length < 8){
+                error.push('Password must have at least 8 characters')
+            }
+
+            return error;
+        }
+    })
+}

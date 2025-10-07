@@ -31,4 +31,8 @@ def formhandler(request):
     if request.POST and request.FILES:
         return HttpResponse("Signup")
     else:
-        return HttpResponse("Login")
+        username = request.GET["username"]
+        template = loader.get_template('profile.html')
+        user = Users.objects.get(username = username)
+        context = {'user':user}
+        return HttpResponse(template.render(request=request, context=context))

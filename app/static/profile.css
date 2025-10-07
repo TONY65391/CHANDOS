@@ -1,0 +1,9 @@
+@import url(index.css);
+
+header{color: black;}
+header .main-logs .link a{
+    color: white;
+}
+header .openBtn div{
+    background: black;
+}
