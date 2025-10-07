@@ -1,9 +1,75 @@
 @import url(index.css);
 
-header{color: black;}
-header .main-logs .link a{
+/* header .main-logs .link a{
     color: white;
+} */
+ header .openBtn div{
+    background: linear-gradient(to right, rgb(248, 65, 65), var(--blue));
+    /* transition: background 0.4s ease-in-out; */
 }
-header .openBtn div{
-    background: black;
+header .openBtn:hover div{
+    background: linear-gradient(to right, var(--blue));
+}
+
+body{
+    background: url(/static/images/kuoll.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+main .details{
+    padding: 50px 30px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    line-height: 1.5;
+    font-variant: small-caps;
+}
+main .details img{
+    width: 150px;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+h1{font-variant: small-caps; margin: 20px auto;}
+
+
+
+main .about{
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+main .about h1,
+main .rules h1{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+main .about img,
+main .rules img{
+    width: 40px;
+}
+main .about p{
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main .rules{
+    text-align: left;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    margin: 0px;
+    padding: 40px 20px;
+}
+main .rules h2{
+    margin-bottom: 10px;
+}
+main .rules p{
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
