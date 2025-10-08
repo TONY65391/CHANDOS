@@ -204,10 +204,10 @@ if (form){
             if (username.length < 10){
                 error.push('Username must have at least 10 characters')
             }
-            if (username !== '@johnkuollualbol'){
+            if (username !== '@judokuollualbol'){
                 error.push('User does not exist!')
             }
-            if (password !== 'johnkuollualbol001'){
+            if (password !== 'judokuollualbol001'){
                 error.push(`Wrong password for ${username} user`)
             }
             if (password.includes(" ")){

@@ -8,7 +8,7 @@
     /* transition: background 0.4s ease-in-out; */
 }
 header .openBtn:hover div{
-    background: linear-gradient(to right, var(--blue));
+    background: linear-gradient(to right, rgb(22, 22, 151));
 }
 
 body{
@@ -63,7 +63,7 @@ main .rules{
     text-align: left;
     background: rgba(0, 0, 0, 0.8);
     color: white;
-    margin: 0px;
+    margin: 0px auto;
     padding: 40px 20px;
 }
 main .rules h2{
